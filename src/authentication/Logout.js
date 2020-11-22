@@ -12,8 +12,9 @@ export default function Logout(props) {
       try {
          await logout();
          history.push("/login");
-      } catch {
-         setError("Something went wrong, fail to logout!");
+      } catch (err) {
+         console.log(err.code);
+         setError(err.message);
       }
    };
    return (

@@ -6,7 +6,7 @@ import { useAuth } from "./AuthProvider";
 export default function Login() {
    const emailRef = useRef();
    const passwordRef = useRef();
-   const { login } = useAuth();
+   const { login, loginGoogle } = useAuth();
    const [error, setError] = useState("");
    const [loading, setLoading] = useState(false);
    const history = useHistory();
@@ -19,6 +19,19 @@ export default function Login() {
          await login(emailRef.current.value, passwordRef.current.value);
          history.push("/");
       } catch (err) {
+         console.log(err.code);
+         setError(err.message);
+      }
+      setLoading(false);
+   };
+   const handleGoogleLogin = async () => {
+      setLoading(true);
+      try {
+         setError("");
+         await loginGoogle();
+         history.push("/");
+      } catch (err) {
+         console.log(err.code);
          setError(err.message);
       }
       setLoading(false);
@@ -55,6 +68,17 @@ export default function Login() {
                      >
                         Login
                      </Button>
+                     <div className="text-center pt-2">
+                        <Button variant="dark" onClick={handleGoogleLogin}>
+                           Login
+                           <img
+                              src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png"
+                              alt="with google"
+                              height="20"
+                              width="20"
+                           ></img>
+                        </Button>
+                     </div>
                   </Form>
                   <div className="text-center my-2">
                      <Link to="/forgot_password">Forgot Password?</Link>

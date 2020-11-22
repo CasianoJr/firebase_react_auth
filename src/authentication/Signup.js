@@ -23,8 +23,9 @@ export default function Signup() {
          setLoading(true);
          await signup(emailRef.current.value, passwordRef.current.value);
          history.push("/");
-      } catch {
-         setError("Something went wrong! Failed to create account. Try again.");
+      } catch (err) {
+         console.log(err.code);
+         setError(err.message);
       }
       setLoading(false);
    };
