@@ -17,7 +17,7 @@ export function AuthProvider(props) {
       return firebaseAuth.signInWithEmailAndPassword(email, password);
    };
    const logout = () => {
-      return firebaseAuth.signOut();
+      return firebaseAuth.signOut().then(() => setCurrentUser(null));
    };
    const resetPassword = (email) => {
       return firebaseAuth.sendPasswordResetEmail(email);

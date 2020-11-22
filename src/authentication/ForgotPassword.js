@@ -27,7 +27,7 @@ export default function ForgotPassword() {
    };
    return (
       <>
-         <div className="col-lg-4 col-md-5 col-8 mx-auto pt-5">
+         <div className="col-lg-4 col-md-6 col-sm-8 col mx-auto pt-5">
             <Card>
                <Card.Body>
                   <div className="h2 text-center mb-4">Password Reset</div>
