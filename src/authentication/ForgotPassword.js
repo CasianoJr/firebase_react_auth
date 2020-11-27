@@ -20,8 +20,9 @@ export default function ForgotPassword() {
          await resetPassword(emailRef.current.value);
          setMessage("Check your inbox and follow instructions");
          history.push("/");
-      } catch {
-         setError(`Cannot verify "${emailRef.current.value}"`);
+      } catch (err) {
+         console.log(err.code);
+         setError(err.message);
       }
       setLoading(false);
    };

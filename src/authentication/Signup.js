@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import { useDataBase } from "../shared/DataBaseProvider";
 import { useAuth } from "./AuthProvider";
 
 export default function Signup() {
+   const { currentUser } = useAuth();
+   const { createUserInDB } = useDataBase();
    const emailRef = useRef();
    const passwordRef = useRef();
    const passwordConfirmRef = useRef();
@@ -12,17 +15,34 @@ export default function Signup() {
    const [loading, setLoading] = useState(false);
    const history = useHistory();
 
+   const userDB = async (authUser) => {
+      const field = authUser.user;
+      const path = `Users`;
+      const user = {
+         email: field.email,
+         displayName: field.displayName,
+         phoneNumber: field.phoneNumber,
+         uid: field.uid,
+      };
+      try {
+         await createUserInDB(path, user);
+      } catch (err) {
+         console.log(err);
+      }
+   };
+   if (currentUser) {
+      history.push("/");
+   }
+
    const handleSubmit = async (e) => {
       e.preventDefault();
-
       if (passwordRef.current.value !== passwordConfirmRef.current.value) {
          return setError("Password do not match!");
       }
       try {
          setError("");
          setLoading(true);
-         await signup(emailRef.current.value, passwordRef.current.value);
-         history.push("/");
+         await signup(emailRef.current.value, passwordRef.current.value).then(userDB);
       } catch (err) {
          console.log(err.code);
          setError(err.message);

@@ -4,14 +4,19 @@ import { AuthProvider } from "../authentication/AuthProvider";
 import Routes from "./Routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./NavBar";
+import DataBaseProvider from "./DataBaseProvider";
+import AlertMessage from "./AlertMessage";
 
 function App() {
    return (
       <div>
          <BrowserRouter>
             <AuthProvider>
-               <NavBar />
-               <Routes />
+               <DataBaseProvider>
+                  <NavBar />
+                  <AlertMessage />
+                  <Routes />
+               </DataBaseProvider>
             </AuthProvider>
          </BrowserRouter>
       </div>

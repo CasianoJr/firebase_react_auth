@@ -10,19 +10,25 @@ export default function NavBar() {
       <div>
          <Navbar bg="dark" variant="dark" expand="md">
             <Link to="/">
-               <Navbar.Brand>Firebase</Navbar.Brand>
+               <Navbar.Brand>Shared Diary</Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                <Nav className="mr-auto">
-                  <Link to="/" className="nav-link">
+                  <Link to="/posts" className="nav-link">
                      Home
                   </Link>
                </Nav>
                <Nav className="ml-auto">
                   {currentUser ? (
                      <>
-                        <div className="nav-link">{currentUser.email}</div>
+                        <Link to={`/posts/${currentUser.uid}/list`}>
+                           <div className="nav-link">
+                              {currentUser.displayName
+                                 ? currentUser.displayName
+                                 : currentUser.email}
+                           </div>
+                        </Link>
                         <Link to="/update_profile" className="nav-link">
                            Update Profile
                         </Link>

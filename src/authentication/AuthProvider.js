@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, createContext, useState } from "react";
 import { firebaseAuth, googleProvider } from "../firebase";
+
 const AuthContext = createContext(null);
 
 export function useAuth() {
@@ -13,6 +14,13 @@ export function AuthProvider(props) {
    const signup = (email, password) => {
       return firebaseAuth.createUserWithEmailAndPassword(email, password);
    };
+   // const signup = (email, password) => {
+   //    const [createdUser, setCreatedUser] = useState();
+   //    firebaseAuth
+   //       .createUserWithEmailAndPassword(email, password)
+   //       .then((e) => setCreatedUser(e));
+   //    return createdUser ? createdUser : null;
+   // };
    const login = (email, password) => {
       return firebaseAuth.signInWithEmailAndPassword(email, password);
    };
@@ -30,6 +38,9 @@ export function AuthProvider(props) {
    };
    const updatePassword = (password) => {
       return currentUser.updatePassword(password);
+   };
+   const updateProfile = (profile) => {
+      return currentUser.updateProfile(profile);
    };
 
    useEffect(() => {
@@ -53,6 +64,7 @@ export function AuthProvider(props) {
       resetPassword,
       updateEmail,
       updatePassword,
+      updateProfile,
    };
 
    return (
