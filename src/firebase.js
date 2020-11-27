@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/database";
 
 const firebaseConfig = {
-   apiKey: "AIzaSyAyrin-aXWfs8nsSr5UvdaTUQ9-V0sC9HY",
-   authDomain: "auth-development-a6759.firebaseapp.com",
-   databaseURL: "https://auth-development-a6759.firebaseio.com",
-   projectId: "auth-development-a6759",
-   storageBucket: "auth-development-a6759.appspot.com",
-   messagingSenderId: "94331314234",
-   appId: "1:94331314234:web:f74372a26c1a2f8b491503",
+   apiKey: "AIzaSyBFMKB8ARIVpdKbh2DGZkPXJuMyZDd55k8",
+   authDomain: "sharednotes-78fdc.firebaseapp.com",
+   databaseURL: "https://sharednotes-78fdc.firebaseio.com",
+   projectId: "sharednotes-78fdc",
+   storageBucket: "sharednotes-78fdc.appspot.com",
+   messagingSenderId: "230077310958",
+   appId: "1:230077310958:web:3ad9d8ac318c3005fad0ff",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
