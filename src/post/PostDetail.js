@@ -37,8 +37,15 @@ export default function PostDetail(props) {
                <Card>
                   <Card.Body>
                      <Card.Title>{post.title}</Card.Title>
-                     <div className="pb-2 small text-muted">
-                        {handleDate(post.dateAdded)}
+                     <div className="mx-2 mt-0">
+                        <Link to={`/posts/${post.authorId}/list`}>
+                           <div className="text-muted small">
+                              Author: {post.authorName}
+                           </div>
+                        </Link>
+                        <div className="small text-muted">
+                           Dated: {handleDate(post.dateAdded)}
+                        </div>
                      </div>
                      <Card.Img
                         src={post.image}

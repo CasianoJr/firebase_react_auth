@@ -18,8 +18,15 @@ export default function ListView({ postList, handleDate }) {
                            className="float-right"
                            width="150"
                         />
-                        <div className="small text-muted">
-                           {handleDate(post.dateAdded)}
+                        <div className="mx-2 mt-0">
+                           <Link to={`/posts/${post.authorId}/list`}>
+                              <div className="text-muted small">
+                                 Author: {post.authorName}
+                              </div>
+                           </Link>
+                           <div className="small text-muted">
+                              Dated: {handleDate(post.dateAdded)}
+                           </div>
                         </div>
                         <div className="card-text">{post.content}</div>
 

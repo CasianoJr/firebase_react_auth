@@ -28,6 +28,9 @@ export default function PostCreate() {
    };
    const handleSubmit = (e) => {
       e.preventDefault();
+      const authorName = currentUser.displayName
+         ? currentUser.displayName
+         : currentUser.email;
       const path = `/Post/${currentUser.uid}`;
       setPost(
          {
@@ -36,6 +39,7 @@ export default function PostCreate() {
             authorId: currentUser.uid,
             image: faker.image.image(),
             dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            authorName: authorName,
          },
          (post) => {
             createPost(path, post, handleError);

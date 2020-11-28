@@ -28,5 +28,10 @@ export default function CurrentUserPost() {
       return d.toLocaleString("en-US");
    };
 
-   return <ListView postList={postList} handleDate={handleDate} />;
+   return (
+      <>
+         <div className="h4 my-2 text-center">Viewing an author's post.</div>
+         <ListView postList={postList} handleDate={handleDate} />{" "}
+      </>
+   );
 }
