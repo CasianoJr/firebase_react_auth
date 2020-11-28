@@ -24,6 +24,7 @@ export default function PostDetail(props) {
       };
       detailPost(postId, path, successFn, errorFn);
    }, [detailPost, postId, path, setError]);
+
    const handleDate = (timestamp) => {
       let d = new Date(timestamp);
       return d.toLocaleString("en-US");
