@@ -51,7 +51,7 @@ export default function PostDetail(props) {
                         src={post.image}
                         className="img-fluid mx-auto d-block w-50"
                      />
-                     <Card.Text>{post.content}</Card.Text>
+                     <Card.Text className="text-justify">{post.content}</Card.Text>
                      {post.authorId === currentUser.uid && (
                         <Link
                            className="btn btn-outline-primary mx-2"

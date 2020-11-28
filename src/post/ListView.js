@@ -15,7 +15,7 @@ export default function ListView({ postList, handleDate }) {
                         <img
                            src={post.image}
                            alt="random"
-                           className="float-right"
+                           className="float-right m-2"
                            width="150"
                         />
                         <div className="mx-2 mt-0">
@@ -28,7 +28,9 @@ export default function ListView({ postList, handleDate }) {
                               Dated: {handleDate(post.dateAdded)}
                            </div>
                         </div>
-                        <div className="card-text">{post.content}</div>
+                        <div className="card-text text-justify">
+                           {post.content.substring(0, 400) + "..."}
+                        </div>
 
                         <div className="pl-lg-5 ml-lg-5">
                            <Link
