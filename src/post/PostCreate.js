@@ -38,7 +38,7 @@ export default function PostCreate() {
             content: contentRef.current.value,
             authorId: currentUser.uid,
             image: faker.image.image(),
-            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            dateAdded: firebase.firestore.FieldValue.serverTimestamp(),
             authorName: authorName,
          },
          (post) => {
